@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { slideIn } from "../styles/animations";
 import { discount, robot } from "../../public";
 import GetStarted from "./GetStarted";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="flex md:flex-row flex-col paddingY">
       <motion.div
@@ -18,15 +21,14 @@ const Hero = () => {
         <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
           <Image src={discount} alt="discount" width={32} height={32} priority={true} />
           <p className="paragraph ml-2">
-            <span className="text-white">20%</span> Discount For{" "}
-            <span className="text-white">1 Month</span> Account
+            <span className="text-white">{t('hero.discount')}</span>
           </p>
         </div>
 
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]">
-            The Next <br className="sm:block hidden" />{" "}
-            <span className="text-gradient">Generation</span>{" "}
+            {t('hero.title1')} <br className="sm:block hidden" />{" "}
+            <span className="text-gradient">{t('hero.title2')}</span>{" "}
           </h1>
           <div className="ss:flex hidden md:mr-4 mr-0">
             <GetStarted />
@@ -34,12 +36,10 @@ const Hero = () => {
         </div>
 
         <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
-          Payment Method.
+          {t('hero.title3')}
         </h1>
         <p className="paragraph max-w-[470px] mt-5">
-          Our team of experts uses a methodology to identify the credit cards
-          most likely to fit your needs. We examine annual percentage rates,
-          annual fees.
+          {t('hero.description')}
         </p>
       </motion.div>
 

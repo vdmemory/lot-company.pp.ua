@@ -3,8 +3,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { navVariants } from "../styles/animations";
 import Image from "next/image";
-import { close, logo, menu } from "../../public";
+import { close, menu } from "../../public";
+import logo from "../assets/logo.jpg";
 import { navLinks } from "../constants";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import SocialLinks from "@/app/components/SocialLinks";
+import {configCompany} from "@/app/data/configCompany";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -12,13 +16,16 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="w-full flex py-6 justify-between items-center navbar"
+      className="w-full flex py-6 justify-between items-center navbar gap-10"
       variants={navVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
     >
-      <Image src={logo} alt="hoobank" width={124} height={32} loading="eager" />
+      <Image src={logo} alt="hoobank" width={88} height={32} loading="eager" />
+      <h1 className="text-white text-[28px] font-bold">
+        {configCompany.name}
+        </h1>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
@@ -33,6 +40,8 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <SocialLinks isHeader />
+      <LanguageSwitcher />
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <Image
@@ -62,6 +71,7 @@ const Navbar = () => {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
+            <LanguageSwitcher />
           </ul>
         </div>
       </div>

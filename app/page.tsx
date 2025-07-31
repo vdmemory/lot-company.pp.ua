@@ -7,9 +7,11 @@ import {
   CardDeal,
   Testimonials,
   Clients,
-  CTA,
+  Contacts,
+  FAQ,
   Footer,
 } from "./components";
+import FloatingContactButton from "@/app/components/FloatingContactButton";
 
 export default function Home() {
   return (
@@ -32,10 +34,12 @@ export default function Home() {
           <CardDeal />
           <Testimonials />
           <Clients />
-          <CTA />
+          <FAQ />
+          <Contacts />
           <Footer />
         </section>
       </section>
+       <FloatingContactButton />
     </main>
   );
 }

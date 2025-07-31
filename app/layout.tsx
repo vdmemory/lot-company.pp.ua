@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./styles/globals.css";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,8 +10,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Hoobank",
-  description: "The Next Generation Banking",
+  title: "LotCompany - IT Решения и Разработка ПО",
+  description: "Профессиональные услуги по разработке программного обеспечения, веб-разработка, кибербезопасность и IT-консалтинг",
 };
 
 export default function RootLayout({
@@ -20,7 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-serif`}>{children}</body>
+      <body className={`${poppins.variable} font-serif`}>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
