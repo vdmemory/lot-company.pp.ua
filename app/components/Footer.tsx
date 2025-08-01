@@ -5,43 +5,34 @@ import Image from "next/image";
 import { useLanguage } from "../contexts/LanguageContext";
 import SocialLinks from "@/app/components/SocialLinks";
 import {configCompany} from "@/app/data/configCompany";
+import {useState} from "react";
 
 const Footer = () => {
-  const { t } = useLanguage();
-  
-  const footerLinks = [
+  const { t, language } = useLanguage();
+  const [active, setActive] = useState("Home");
+
+  const navLinks = [
     {
-      title: t('footer.services'),
-      links: [
-        { name: "Веб-разработка", link: "https://www.lotcompany.com/web-development/" },
-        { name: "Мобильные приложения", link: "https://www.lotcompany.com/mobile-apps/" },
-        { name: "Кибербезопасность", link: "https://www.lotcompany.com/cybersecurity/" },
-        { name: "DevOps", link: "https://www.lotcompany.com/devops/" },
-        { name: "Консалтинг", link: "https://www.lotcompany.com/consulting/" },
-      ],
+      id: "home",
+      title: t('nav.home'),
     },
     {
-      title: t('footer.support'),
-      links: [
-        { name: "Центр помощи", link: "https://www.lotcompany.com/help-center/" },
-        { name: "Партнеры", link: "https://www.lotcompany.com/partners/" },
-        { name: "Документация", link: "https://www.lotcompany.com/docs/" },
-        { name: "Блог", link: "https://www.lotcompany.com/blog/" },
-        { name: "Новости", link: "https://www.lotcompany.com/news/" },
-      ],
+      id: "services",
+      title: t('nav.services'),
     },
     {
-      title: t('footer.company'),
-      links: [
-        { name: "О нас", link: "https://www.lotcompany.com/about/" },
-        { name: "Карьера", link: "https://www.lotcompany.com/careers/" },
-      ],
+      id: "solutions",
+      title: t('nav.solutions'),
+    },
+    {
+      id: "faq",
+      title: t('nav.faq'),
     },
   ];
 
   return (
     <section className="flexCenter paddingY flex-col">
-      <div className="flexStart md:flex-row flex-col mb-8 w-full">
+      <div className="flexCenter md:flex-row flex-col mb-8 w-full">
         <div className=" flex flex-col justify-start mr-10 gap-6">
           <div className="flex-[1] flex items-center justify-start mr-10 gap-6">
             <Image src={logo} alt="hoobank" width={48} height={32} loading="eager" />
@@ -51,34 +42,27 @@ const Footer = () => {
           </div>
           <div className="flex-[1] flex items-center justify-start mr-10 gap-6">
             <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">
-              {t('footer.description')}
+              {
+                language === "en" ? configCompany.infoEng : language === 'uk' ? configCompany.infoUa : configCompany.info
+              }
             </p>
           </div>
         </div>
 
         <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
-          {footerLinks.map((footerlink) => (
-            <div
-              key={footerlink.title}
-              className={`flex flex-col ss:my-0 my-4 min-w-[150px]`}
-            >
-              <h1 className="font-poppins font-medium text-[18px] leading-[27px] text-white">
-                {footerlink.title}
-              </h1>
-              <ul className="list-none mt-4">
-                {footerlink.links.map((link, index) => (
-                  <li
-                    key={link.name}
-                    className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary transition-colors delay-150 cursor-pointer ${
-                      index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"
-                    }`}
-                  >
-                    {link.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+          {navLinks.map((nav, index) => (
+              <li
+                  key={nav.id}
+                  className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
+                      active === nav.title ? "text-secondary" : "text-white"
+                  } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+                  onClick={() => setActive(nav.title)}
+              >
+                <a href={`#${nav.id}`}>{nav.title}</a>
+              </li>
           ))}
+          </ul>
         </div>
       </div>
 

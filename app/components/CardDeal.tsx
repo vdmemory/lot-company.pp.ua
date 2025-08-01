@@ -13,7 +13,7 @@ const CardDeal = () => {
     <section className="section">
       <motion.div
         className="sectionInfo"
-        variants={slideIn("left", "tween", 0.2, 1.5)}
+        variants={slideIn("left", "tween", 0.1, 1)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}

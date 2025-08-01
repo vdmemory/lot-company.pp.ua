@@ -1,5 +1,5 @@
 export const configCompany = {
-  name: 'IT Corporation',
+  name: 'LOT COMPANY',
   info: 'LOT COMPANY LTD EIK 207274529',
   infoEng: 'LOT COMPANY LTD EIK 207274529',
   infoUa: 'ТОВ "ЛОТ КОМПАНІ" ЄДРПОУ 208418288',

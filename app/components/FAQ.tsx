@@ -103,7 +103,7 @@ const FAQ = () => {
     <section id="faq" className="paddingY">
       <motion.div
         className="w-full"
-        variants={slideIn("up", "tween", 0.2, 1)}
+        variants={slideIn("up", "tween", 0.07, 0.6)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}

@@ -12,6 +12,7 @@ import {
   Footer,
 } from "./components";
 import FloatingContactButton from "@/app/components/FloatingContactButton";
+import Pricing from "@/app/components/Pricing";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
           <CardDeal />
           <Testimonials />
           <Clients />
+          <Pricing />
           <FAQ />
           <Contacts />
           <Footer />

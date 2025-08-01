@@ -5,14 +5,39 @@ import { navVariants } from "../styles/animations";
 import Image from "next/image";
 import { close, menu } from "../../public";
 import logo from "../assets/logo.jpg";
-import { navLinks } from "../constants";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 import SocialLinks from "@/app/components/SocialLinks";
 import {configCompany} from "@/app/data/configCompany";
+import {useLanguage} from "@/app/contexts/LanguageContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+
+  const { t } = useLanguage();
+
+const navLinks = [
+    {
+      id: "home",
+      title: t('nav.home'),
+    },
+    {
+      id: "services",
+      title: t('nav.services'),
+    },
+    {
+      id: "solutions",
+      title: t('nav.solutions'),
+    },
+    {
+      id: "faq",
+      title: t('nav.faq'),
+    },
+    {
+      id: "contacts",
+      title: t('nav.contacts'),
+    },
+  ];
 
   return (
     <motion.nav
@@ -39,9 +64,12 @@ const Navbar = () => {
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
+          <span className="w-[1px] h-[24px] bg-gray-600 mx-4"></span>
+          <SocialLinks isHeader />
+          <span className="w-[1px] h-[24px] bg-gray-600 mx-4"></span>
+          <LanguageSwitcher />
       </ul>
-      <SocialLinks isHeader />
-      <LanguageSwitcher />
+
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <Image

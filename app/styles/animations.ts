@@ -12,7 +12,7 @@ export const navVariants = {
     y: 0,
     transition: {
       type: "spring",
-      delay: 1.5,
+      delay: 1,
     },
   },
 };
@@ -23,7 +23,7 @@ export const zoomIn = {
     scale: 0.5,
     transition: {
       type: "spring",
-      delay: 0.5,
+      delay: 0.1,
     },
   },
   show: {
@@ -31,7 +31,7 @@ export const zoomIn = {
     scale: 1,
     transition: {
       type: "spring",
-      delay: 0.5,
+      delay: 0.1,
     },
   },
 };

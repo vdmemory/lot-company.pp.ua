@@ -5,16 +5,21 @@ import { fadeIn, slideIn } from "../styles/animations";
 import Button from "./Button";
 import { useLanguage } from "../contexts/LanguageContext";
 import { send, shield, star } from "../../public";
-import {features} from "@/app/constants";
 
 interface featureCardProps {
   icon: string;
   title: string;
   content: string;
   index: number;
+    features: Array<{
+        id: string;
+        icon: string;
+        title: string;
+        content: string;
+    }>;
 }
 
-const FeatureCard = ({ icon, title, content, index }: featureCardProps) => (
+const FeatureCard = ({ icon, title, content, index, features }: featureCardProps) => (
   <div
     className={`flex p-6 rounded-[20px] ${
       index !== features.length - 1 ? "mb-6" : "mb-0"
@@ -69,7 +74,7 @@ const Business = () => {
     <section id="services" className="section">
       <motion.div
         className="sectionInfo"
-        variants={slideIn("left", "tween", 0.2, 1.5)}
+        variants={slideIn("left", "tween", 0.1, 1)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
@@ -88,12 +93,12 @@ const Business = () => {
         {features.map((feature, index) => (
           <motion.div
             key={feature.id}
-            variants={fadeIn("left", "spring", index * 0.5, 1)}
+            variants={fadeIn("left", "spring", index * 0.5, 0.7)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
           >
-            <FeatureCard key={feature.id} {...feature} index={index} />
+            <FeatureCard key={feature.id} {...feature} index={index} features={features}/>
           </motion.div>
         ))}
       </div>
