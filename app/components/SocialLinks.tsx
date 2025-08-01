@@ -1,19 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import facebook from '../assets/facebook.png';
-import linkedin from '../assets/linkedin.png';
 import insa from '../assets/insta.png';
-import olx from '../assets/olx.png';
-import prom from '../assets/prom.png';
+import upwork from '../assets/upwork.png';
 import {configCompany} from "@/app/data/configCompany";
 
 const SocialLinks = ({ isHeader = false, isLight = false }: { isHeader?: boolean; isLight?: boolean }) => {
   const socialLinks = [
     { icon: facebook, href: configCompany.facebook, color: '#A01F5D' },
-    { icon: linkedin, href: configCompany.linkedin, color: '#2B7AC2' },
     { icon: insa, href: configCompany.instagram, color: '#FBB216' },
-    { icon: olx, href: configCompany.olx, color: '#64B232' },
-    { icon: prom, href: configCompany.prom, color: '#FF4500' },
+    {icon: upwork, href: configCompany.upwork, color: '#64B232' },
   ];
 
   const links = isHeader ? socialLinks.slice(0, 3) : socialLinks;

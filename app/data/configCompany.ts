@@ -17,4 +17,5 @@ export const configCompany = {
   instagram: 'https://www.instagram.com/',
   linkedin: 'https://www.linkedin.com/',
   whatsapp: 'https://www.whatsapp.com/',
+    upwork: 'https://www.upwork.com/',
 }

@@ -37,7 +37,7 @@ const Pricing = () => {
                 <h2 className="heading2 mb-4 text-center">
                     {t("pricing.title")}
                 </h2>
-                <p className="paragraph max-w-[700px] text-center mb-12 text-center">
+                <p className="paragraph max-w-[700px] text-center mb-12">
                     {t("pricing.description")}
                     Choose the plan that fits your needs. All plans include a free consultation and support.
                 </p>
