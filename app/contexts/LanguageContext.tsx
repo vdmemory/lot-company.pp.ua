@@ -6,7 +6,7 @@ export type Language = 'bg' | 'uk' | 'en';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string) => string | string[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -34,7 +34,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('language', lang);
   };
 
-  const t = (key: string): string => {
+  const t = (key: string): string | string[] => {
     return translations[language]?.[key] || translations['bg'][key] || key;
   };
 
@@ -45,7 +45,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   );
 };
 
-const translations: Record<Language, Record<string, string>> = {
+const translations: Record<Language, Record<string, string | string[] >> = {
   bg: {
     // Navigation
     'nav.home': 'Начало',
@@ -108,6 +108,46 @@ const translations: Record<Language, Record<string, string>> = {
     'contacts.info.workingHours': 'Работно време',
     'contacts.info.addressText': 'гр. София, бул. Витоша, 15\nБЦ "Технопарк", офис 420\n1000, България',
     'contacts.info.workingHoursText': 'Пн-Пт: 9:00 - 18:00\nСб-Нд: по договаряне',
+
+    // Pricing
+    'pricing.title': 'Ценови планове',
+    'pricing.description': 'Изберете план, който отговаря на вашите нужди. Всички планове включват безплатна консултация и поддръжка.',
+    'pricing.basic.title': 'Базов план',
+    'pricing.basic.desc': 'Идеален за малки бизнеси и стартъпи',
+    'pricing.basic.price': '99 лв/месец',
+    'pricing.basic.features': [
+      'Сайт-визитка или корпоративен сайт',
+      'Отзивчив дизайн',
+      'SEO оптимизация',
+      'Основна аналитика',
+      'SSL сертификат',
+      '3 месеца поддръжка',
+      'Обучение по администриране',
+    ],
+    'pricing.professional.title': 'Професионален план',
+    'pricing.professional.desc': 'За средни бизнеси и сложни проекти',
+    'pricing.professional.price': '199 лв/месец',
+    'pricing.professional.features': [
+      'Уеб приложение с CMS',
+      'Интеграция с външни API',
+      'Система за управление на потребители',
+      'Разширена аналитика',
+      'Автоматично архивиране',
+      'Одит на сигурността',
+      '6 месеца поддръжка',
+    ],
+    'pricing.enterprise.title': 'Корпоративен план',
+    'pricing.enterprise.desc': 'За големи предприятия и персонализирани решения',
+    'pricing.enterprise.price': '499 лв/месец',
+    'pricing.enterprise.features': [
+      'Персонализирана разработка на уеб приложение',
+      'Мащабируема архитектура',
+        'Интеграция с трети страни услуги',
+        'Оптимизация на производителността',
+        '24/7 поддръжка',
+        'Мониторинг на сигурността',
+        '1 година поддръжка',
+    ],
 
     // FAQ
     'faq.title': 'Често задавани въпроси',
@@ -205,6 +245,46 @@ const translations: Record<Language, Record<string, string>> = {
     'contacts.info.addressText': 'м. Київ, вул. Хрещатик, 15\nБЦ "Технопарк", офіс 420\n01001, Україна',
     'contacts.info.workingHoursText': 'Пн-Пт: 9:00 - 18:00\nСб-Нд: за домовленістю',
 
+    // Pricing
+    'pricing.title': 'Цінові плани',
+    'pricing.description': 'Оберіть план, який відповідає вашим потребам. Усі плани включають безкоштовну консультацію та підтримку.',
+    'pricing.basic.title': 'Базовий план',
+    'pricing.basic.desc': 'Ідеально підходить для малого бізнесу та стартапів',
+    'pricing.basic.price': '99 грн/місяць',
+    'pricing.basic.features': [
+      'Сайт-візитка або корпоративний сайт',
+      'Адаптивний дизайн',
+      'SEO оптимізація',
+      'Базова аналітика',
+      'SSL сертифікат',
+      '3 місяці підтримки',
+      'Навчання адмініструванню',
+    ],
+    'pricing.professional.title': 'Професійний план',
+    'pricing.professional.desc': 'Для середнього бізнесу та складних проектів',
+    'pricing.professional.price': '199 грн/місяць',
+    'pricing.professional.features': [
+      'Веб-додаток з CMS',
+      'Інтеграція з зовнішніми API',
+      'Система управління користувачами',
+      'Розширена аналітика',
+      'Автоматичне резервне копіювання',
+      'Аудит безпеки',
+      '6 місяців підтримки',
+    ],
+    'pricing.enterprise.title': 'Корпоративний план',
+    'pricing.enterprise.desc': 'Для великих підприємств та індивідуальних рішень',
+    'pricing.enterprise.price': '499 грн/місяць',
+    'pricing.enterprise.features': [
+      'Індивідуальна розробка веб-додатку',
+      'Масштабована архітектура',
+      'Інтеграція з сторонніми сервісами',
+      'Оптимізація продуктивності',
+      '24/7 підтримка',
+      'Моніторинг безпеки',
+      '1 рік підтримки',
+    ],
+
     // FAQ
     'faq.title': 'Часто задавані питання',
     'faq.description': 'Відповіді на найпопулярніші питання про наші послуги розробки програмного забезпечення та IT-рішень',
@@ -300,6 +380,46 @@ const translations: Record<Language, Record<string, string>> = {
     'contacts.info.workingHours': 'Working Hours',
     'contacts.info.addressText': 'London, Oxford Street, 15\nTech Park Business Center, Office 420\nW1C 1DE, United Kingdom',
     'contacts.info.workingHoursText': 'Mon-Fri: 9:00 AM - 6:00 PM\nSat-Sun: By appointment',
+
+    // Pricing
+    'pricing.title': 'Pricing Plans',
+    'pricing.description': 'Choose the plan that fits your needs. All plans include a free consultation and support.',
+    'pricing.basic.title': 'Basic Plan',
+    'pricing.basic.desc': 'Ideal for small businesses and startups',
+    'pricing.basic.price': '$99/month',
+    'pricing.basic.features': [
+      'Landing page or corporate website',
+      'Responsive design',
+      'SEO optimization',
+        'Basic analytics',
+        'SSL certificate',
+        '3 months support',
+        'Administration training',
+    ],
+    'pricing.professional.title': 'Professional Plan',
+    'pricing.professional.desc': 'For medium-sized businesses and complex projects',
+    'pricing.professional.price': '$199/month',
+    'pricing.professional.features': [
+      'Web application with CMS',
+      'External API integration',
+      'User management system',
+      'Advanced analytics',
+      'Automatic backup',
+      'Security audit',
+      '6 months support',
+    ],
+    'pricing.enterprise.title': 'Enterprise Plan',
+    'pricing.enterprise.desc': 'For large enterprises and custom solutions',
+    'pricing.enterprise.price': '$499/month',
+    'pricing.enterprise.features': [
+      'Custom web application development',
+      'Scalable architecture',
+      'Integration with third-party services',
+      'Performance optimization',
+      '24/7 support',
+      'Security monitoring',
+      '1 year support',
+    ],
 
     // FAQ
     'faq.title': 'Frequently Asked Questions',
