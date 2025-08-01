@@ -5,6 +5,7 @@ import { fadeIn, slideIn } from "../styles/animations";
 import Button from "./Button";
 import { useLanguage } from "../contexts/LanguageContext";
 import { send, shield, star } from "../../public";
+import React from "react";
 
 interface featureCardProps {
   icon: string;
@@ -86,7 +87,12 @@ const Business = () => {
           {t('business.description')}
         </p>
 
-        <Button styles={`mt-10`} />
+        <a
+            href={'#contacts'}
+            className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none mt-10`}
+        >
+          {t('button.startProject')}
+        </a>
       </motion.div>
 
       <div className="sectionImg flex-col">

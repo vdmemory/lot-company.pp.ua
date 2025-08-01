@@ -5,6 +5,7 @@ import { slideIn } from "../styles/animations";
 import Button from "./Button";
 import Image from "next/image";
 import { useLanguage } from "../contexts/LanguageContext";
+import React from "react";
 
 const CardDeal = () => {
   const { t } = useLanguage();
@@ -25,7 +26,12 @@ const CardDeal = () => {
           {t('carddeal.description')}
         </p>
 
-        <Button styles={`mt-10`} />
+          <a
+              href={'#contacts'}
+              className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none mt-10`}
+          >
+              {t('button.startProject')}
+          </a>
       </motion.div>
 
       <motion.div
