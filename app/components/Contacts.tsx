@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { slideIn } from "../styles/animations";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -79,7 +78,7 @@ const Contacts = () => {
 
       <motion.div
         className="flex-1 flex flex-col md:ml-10 ml-0 md:mt-0 mt-10"
-        variants={slideIn("right", "tween", 0.2, 1.5)}
+        variants={slideIn("right", "tween", 0.07, 0.7)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}

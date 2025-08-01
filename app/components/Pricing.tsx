@@ -5,23 +5,23 @@ import { slideIn } from "../styles/animations";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Pricing = () => {
-    const { t } = useLanguage();
+    const { t, tLists } = useLanguage();
 
     const plans = [
         {
             title: t('pricing.basic.title'),
             price: t('pricing.basic.price'),
-            features: t('pricing.basic.features'),
+            features: tLists('pricing.basic.features'),
         },
         {
             title: t('pricing.professional.title'),
             price: t('pricing.professional.price'),
-            features: t('pricing.professional.features'),
+            features: tLists('pricing.professional.features'),
         },
         {
             title: t('pricing.enterprise.title'),
             price: t('pricing.enterprise.price'),
-            features: t('pricing.enterprise.features'),
+            features: tLists('pricing.enterprise.features'),
         },
     ];
 
@@ -53,7 +53,7 @@ const Pricing = () => {
                                 <p className="text-[28px] font-bold text-secondary mb-4">{plan.price}</p>
                                 <ul className="space-y-2 text-[16px] mb-6">
 
-                                    {(plan.features as string[]).map((feature, i) => (
+                                    {plan.features.map((feature, i) => (
                                         <li key={i}>- {feature}</li>
                                     ))}
                                 </ul>

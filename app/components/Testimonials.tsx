@@ -11,22 +11,22 @@ const Testimonials = () => {
     {
       id: "feedback-1",
       content: t('testimonials.feedback1'),
-      name: "Алексей Петров",
+      name: "Oksana Sviridova",
       title: "CTO, TechCorp",
       img: people01,
     },
     {
       id: "feedback-2",
       content: t('testimonials.feedback2'),
-      name: "Мария Сидорова",
-      title: "Директор по развитию, InnovateLab",
+      name: "Artemiy Petrov",
+      title: "Founder, InnovateLab",
       img: people02,
     },
     {
       id: "feedback-3",
       content: t('testimonials.feedback3'),
-      name: "Дмитрий Козлов",
-      title: "IT-директор, SecureBank",
+      name: "Margot Shirokova",
+      title: "CEO, SecureBank",
       img: people03,
     },
   ];
