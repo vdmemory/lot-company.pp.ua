@@ -6,7 +6,7 @@ import { useLanguage, Language } from '../contexts/LanguageContext';
 const languages = [
   { code: 'bg' as Language, name: 'Български', flag: '🇧🇬' },
   { code: 'uk' as Language, name: 'Українська', flag: '🇺🇦' },
-  { code: 'en' as Language, name: 'English', flag: '🇬🇧' },
+  { code: 'en' as Language, name: 'English', flag: '🇺🇸' },
 ];
 
 const LanguageSwitcher = () => {
